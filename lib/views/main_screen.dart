@@ -73,6 +73,24 @@ class _MainScreenState extends State<MainScreen> {
       ),
       body: _selectedScreen,
       sideBar: SideBar(
+        header: Container(
+          height: 50,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            color: Colors.black,
+          ),
+          child: Center(
+            child: Text(
+              'Multi Vendor Admin',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1.7,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
         items: const [
           AdminMenuItem(
             title: 'Vendors',
