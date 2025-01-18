@@ -13,6 +13,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late String categoryName;
   dynamic _image;
+  dynamic _bannerImage;
 
   pickImage() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -23,6 +24,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
     if (result != null) {
       setState(() {
         _image = result.files.first.bytes;
+      });
+    }
+  }
+
+  pickBannerImage() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.image,
+      allowMultiple: false,
+    );
+
+    if (result != null) {
+      setState(() {
+        _bannerImage = result.files.first.bytes;
       });
     }
   }
@@ -130,9 +144,40 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 child: Text("Upload Images"),
               ),
             ),
-            Divider(
+            const Divider(
               color: Colors.grey,
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Center(
+                  child: _bannerImage != null
+                      ? Image.memory(_bannerImage)
+                      : Text(
+                          'Category Banner',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  pickBannerImage();
+                },
+                child: Text("Pick Image"),
+              ),
+            ),
+            Divider(
+              color: Colors.grey,
+            )
           ],
         ),
       ),
