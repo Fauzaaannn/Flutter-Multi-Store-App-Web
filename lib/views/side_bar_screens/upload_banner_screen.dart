@@ -1,3 +1,4 @@
+import 'package:app_web/controllers/banner_controller.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,8 @@ class UploadBannerScreen extends StatefulWidget {
 }
 
 class _UploadBannerScreenState extends State<UploadBannerScreen> {
+  final BannerController _bannerController = BannerController();
+
   dynamic _image;
 
   pickImage() async {
@@ -69,7 +72,12 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await _bannerController.uploadBanner(
+                      pickedImage: _image,
+                      context: context,
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                   ),
@@ -85,7 +93,9 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
         Padding(
           padding: const EdgeInsets.fromLTRB(20.0, 8.0, 0.0, 0.0),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              pickImage();
+            },
             child: Text('Pick Image'),
           ),
         ),
