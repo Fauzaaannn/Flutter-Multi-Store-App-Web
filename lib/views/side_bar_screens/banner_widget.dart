@@ -40,16 +40,19 @@ class _BannerWidgetState extends State<BannerWidget> {
             shrinkWrap: true,
             itemCount: banners.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 6,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
+              crossAxisCount: 6, // number of columns
+              crossAxisSpacing: 8, // spacing between columns
+              mainAxisSpacing: 8, // spacing between rows
             ),
             itemBuilder: (context, index) {
               final banner = banners[index];
-              return Image.network(
-                banner.image,
-                height: 100,
-                width: 100,
+              return Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Image.network(
+                  banner.image,
+                  height: 200,
+                  width: 200,
+                ),
               );
             },
           );
