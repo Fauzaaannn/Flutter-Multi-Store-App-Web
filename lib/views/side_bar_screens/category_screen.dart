@@ -1,4 +1,5 @@
 import 'package:app_web/controllers/category_controller.dart';
+import 'package:app_web/views/side_bar_screens/widgets/category_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -46,9 +47,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Form(
-        key: _formKey,
+    return Form(
+      key: _formKey,
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -184,7 +185,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
             ),
             Divider(
               color: Colors.grey,
-            )
+            ),
+            CategoryWidget(),
           ],
         ),
       ),
