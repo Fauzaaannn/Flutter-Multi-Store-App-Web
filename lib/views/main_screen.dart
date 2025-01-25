@@ -1,3 +1,4 @@
+import 'package:app_web/views/side_bar_screens/subcategory_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
@@ -40,6 +41,12 @@ class _MainScreenState extends State<MainScreen> {
       case CategoryScreen.id:
         setState(() {
           _selectedScreen = CategoryScreen();
+        });
+        break;
+
+      case SubcategoryScreen.id:
+        setState(() {
+          _selectedScreen = const SubcategoryScreen();
         });
         break;
 
@@ -111,6 +118,11 @@ class _MainScreenState extends State<MainScreen> {
             title: 'Categories',
             route: CategoryScreen.id,
             icon: Icons.category,
+          ),
+          AdminMenuItem(
+            title: 'Subcategories',
+            route: SubcategoryScreen.id,
+            icon: Icons.category_outlined,
           ),
           AdminMenuItem(
             title: 'Upload Banners',
